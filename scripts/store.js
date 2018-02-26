@@ -4,10 +4,16 @@
 
 // eslint-disable-next-line no-unused-vars
 const store = (function () {
+  const items = [
+    { id: cuid(), name: 'apples', checked: false },
+    { id: cuid(), name: 'oranges', checked: false },
+    { id: cuid(), name: 'milk', checked: true },
+    { id: cuid(), name: 'bread', checked: false }
+  ];
   // const hideCheckedItems = function (itemName) {};
   // const searchTerm = function () {};
   const findById = function (id) {
-    return store.items.find(item => item.id === id); 
+    return this.items.find(item => item.id === id); 
   };
   const additem = function (name) {
     try {
@@ -17,7 +23,6 @@ const store = (function () {
       let result = Item.create(name);
       // console.log(result);
       this.items.push(result);
-      shoppingList.render();
     } catch(e) { 
       console.error(`Cannot add item ${e.message}`);
     }
@@ -38,7 +43,7 @@ const store = (function () {
   };
   const findAndDelete = function (id) {
     const index = this.findById(id);
-    store.items.splice(index,1);  
+    this.items.splice(index,1);  
   };
 
   const toggleCheckedFilter = function () {
@@ -49,12 +54,7 @@ const store = (function () {
   };
 
   return {
-    items: [
-      { id: cuid(), name: 'apples', checked: false },
-      { id: cuid(), name: 'oranges', checked: false },
-      { id: cuid(), name: 'milk', checked: true },
-      { id: cuid(), name: 'bread', checked: false }
-    ],
+    items,
     hideCheckedItems: false,
     searchTerm: '',
     additem,
