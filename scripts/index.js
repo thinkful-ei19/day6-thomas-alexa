@@ -1,4 +1,4 @@
-/* global shoppingList, cuid */
+/* global shoppingList*/
 
 // eslint-disable-next-line no-unused-vars
 'use strict';
@@ -13,6 +13,7 @@
   searchTerm: ''
 };
 */
+
 $(document).ready(function() {
   shoppingList.render();
   shoppingList.bindEventListeners();

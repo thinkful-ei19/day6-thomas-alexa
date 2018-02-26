@@ -6,6 +6,7 @@
 const shoppingList = (function () {
 
   function generateItemElement(item) {
+    console.log(item);
     let itemTitle = `<span class="shopping-item shopping-item__checked">${item.name}</span>`;
     if (!item.checked) {
       itemTitle = `
@@ -57,25 +58,14 @@ const shoppingList = (function () {
   }
 
 
-  function addItemToShoppingList(itemName) {
-    try {
-      Item.validateName();
-      let result = Item.create();
-      store.items.push(result);
-      render();
-    } catch (e) { 
-      console.log(`Cannot add item ${e.message}`);
-    }
-
-    store.items.push({ id: cuid(), name: itemName, checked: false });
-  }
 
   function handleNewItemSubmit() {
     $('#js-shopping-list-form').submit(function (event) {
       event.preventDefault();
       const newItemName = $('.js-shopping-list-entry').val();
       $('.js-shopping-list-entry').val('');
-      addItemToShoppingList(newItemName);
+      console.log(store);
+      store.additem(newItemName);
       render();
     });
   }
