@@ -18,5 +18,5 @@ const store = (function () {
   };
 }());
 
-const foo = 'bar';
+//const foo = 'bar';
 
