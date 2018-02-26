@@ -6,7 +6,7 @@
 const shoppingList = (function () {
 
   function generateItemElement(item) {
-    console.log(item);
+  //  console.log(item);
     let itemTitle = `<span class="shopping-item shopping-item__checked">${item.name}</span>`;
     if (!item.checked) {
       itemTitle = `
@@ -70,12 +70,6 @@ const shoppingList = (function () {
     });
   }
 
-  function toggleCheckedForListItem(id) {
-    const foundItem = store.items.find(item => item.id === id);
-    foundItem.checked = !foundItem.checked;
-  }
-
-
   function getItemIdFromElement(item) {
     return $(item)
       .closest('.js-item-element')
@@ -85,7 +79,7 @@ const shoppingList = (function () {
   function handleItemCheckClicked() {
     $('.js-shopping-list').on('click', '.js-item-toggle', event => {
       const id = getItemIdFromElement(event.currentTarget);
-      toggleCheckedForListItem(id);
+      store.findAndToggleChecked(id);
       render();
     });
   }
@@ -100,8 +94,8 @@ const shoppingList = (function () {
     item.name = itemName;
   }
 
-  function toggleCheckedItemsFilter() {
-    store.hideCheckedItems = !store.hideCheckedItems;
+   function toggleCheckedItemsFilter() {
+     store.hideCheckedItems = !store.hideCheckedItems;
   }
 
   function setSearchTerm(val) {

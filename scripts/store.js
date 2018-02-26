@@ -7,7 +7,7 @@ const store = (function () {
   // const hideCheckedItems = function (itemName) {};
   // const searchTerm = function () {};
   const findById = function (id) {
-    store.items.find(idValue => idValue === id); 
+    return store.items.find(item => item.id === id); 
   };
   const additem = function (name) {
     try {
@@ -15,14 +15,18 @@ const store = (function () {
       Item.validateName(name);
       console.log(Item.validateName);
       let result = Item.create(name);
-      console.log(result);
+      // console.log(result);
       this.items.push(result);
       shoppingList.render();
     } catch(e) { 
       console.error(`Cannot add item ${e.message}`);
     }
-    //store.items.push({ id: cuid(), name: name, checked: false });
-};
+  };
+  const findAndToggleChecked = function (id) {
+    let foundItem  = this.findById(id);
+    console.log(foundItem);
+    foundItem.checked = !foundItem.checked;
+  };
   return {
     items: [
       { id: cuid(), name: 'apples', checked: false },
@@ -33,6 +37,8 @@ const store = (function () {
     hideCheckedItems: false,
     searchTerm: '',
     additem,
+    findById,
+    findAndToggleChecked,
   };
 }());
 
