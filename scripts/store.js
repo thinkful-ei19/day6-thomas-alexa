@@ -35,7 +35,12 @@ const store = (function () {
     }
     const item = this.findById(id);
     item.name = newName;
-  }
+  };
+  const findAndDelete = function (id) {
+    const index = this.findById(id);
+    store.items.splice(index,1);
+      
+  };
   return {
     items: [
       { id: cuid(), name: 'apples', checked: false },
@@ -49,6 +54,7 @@ const store = (function () {
     findById,
     findAndToggleChecked,
     findAndUpdateName,
+    findAndDelete,
   };
 }());
 
