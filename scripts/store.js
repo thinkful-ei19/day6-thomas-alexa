@@ -6,6 +6,16 @@
 const store = (function () {
   const hideCheckedItems = function (itemName) {};
   const searchTerm = function () {};
+  const findById = function (id) {
+    store.items.find(idValue => idValue === id); 
+  };
+  const additem = function (name) {
+    try {
+    
+    } catch(error) {
+          
+    }
+  };
   return {
     items: [
       { id: cuid(), name: 'apples', checked: false },
