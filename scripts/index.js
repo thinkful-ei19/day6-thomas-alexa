@@ -1,7 +1,8 @@
 /* global shoppingList, cuid */
 
 // eslint-disable-next-line no-unused-vars
-const store = {
+'use strict';
+/*const store = {
   items: [
     { id: cuid(), name: 'apples', checked: false },
     { id: cuid(), name: 'oranges', checked: false },
@@ -11,8 +12,11 @@ const store = {
   hideCheckedItems: false,
   searchTerm: ''
 };
-
+*/
 $(document).ready(function() {
   shoppingList.bindEventListeners();
   shoppingList.render();
 });
+
+console.log(store);
+console.log(foo);
