@@ -27,6 +27,15 @@ const store = (function () {
     console.log(foundItem);
     foundItem.checked = !foundItem.checked;
   };
+  const findAndUpdateName =  function (id, newName) {
+    try {
+      Item.validateName(name);
+    } catch(e) {
+      console.error(`Cannot add item ${e.message}`);
+    }
+    const item = this.findById(id);
+    item.name = newName;
+  }
   return {
     items: [
       { id: cuid(), name: 'apples', checked: false },
@@ -39,6 +48,7 @@ const store = (function () {
     additem,
     findById,
     findAndToggleChecked,
+    findAndUpdateName,
   };
 }());
 
